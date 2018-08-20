@@ -15,7 +15,7 @@
         }
 
         .content {
-            width: 32em;
+            width: 42em;
             max-width: 100%;
             margin: 0 auto;
         }
@@ -53,7 +53,7 @@
 <main>
     <div class="content">
         <h1>When Will The Next Flarum Beta Be Released&nbsp;?</h1>
-        <h2>I don't know. Nobody knows.</h2>
+        <h2>I don't know.<br /><span id="who-knows">Nobody knows.</span></h2>
         <p>
             Now take a deep breath and wait with the rest of us while the devs work out their magic ✨
         </p>
@@ -88,5 +88,21 @@
         </p>
     </div>
 </footer>
+<script>
+Array.prototype.current = -1
+Array.prototype.next = function () {
+    if (++this.current >= this.length) this.current = 0
+    return this[this.current];
+}
+
+var whoKnows = [
+    'Only God knows.',
+    'You don\'t know.',
+    'Nobody knows.',
+]
+setInterval(function () {
+    document.getElementById('who-knows').innerHTML = whoKnows.next()
+}, 5000)
+</script>
 </body>
 </html>
